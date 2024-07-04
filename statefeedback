@@ -27,7 +27,7 @@ for i =1:Node
 end
 
 torque=-e-(k2*e2)-(W'*S);
-% updating laws
+
  dW = gam_w*( S*e2' - sigma_w*W );
  dB = gam_b*( tanh(e2/b)*e2' -sigma_b*B );
 if norm([x(1) x(2) x(3)])>=0
