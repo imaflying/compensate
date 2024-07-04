@@ -1,0 +1,35 @@
+b=0.1;
+sigma_w = 0.01;
+sigma_b = 0.01;
+gam_w = 50*eye(16);
+gam_b = 50*eye(3);
+% 
+variance = 50;
+ Node = 2^4;
+k = 1;
+Mu=zeros(4,16);
+for i1 = 1*(-1:2:1)
+    for i2 = 1*(-1:2:1)
+        for i3 = 1*(-1:2:1)
+            for i4 = 1*(-1:2:1)
+                Mu(:,k) = [i1,i2,i3,i4];
+                k = k+1;
+            end
+        end
+    end
+end
+ Z=[pi1' pi2' alp1 dalp1]';
+Zin=Z(:,1)+Z(:,2)+Z(:,3);
+for i =1:Node
+    S(i,1)=exp(-(Zin-Mu(:,i))'*(Zin-Mu(:,i))/variance);
+end
+
+torque=-e-(k2*e2)-(W'*S);
+
+ dW = gam_w*( S*e2' - sigma_w*W );
+ dB = gam_b*( tanh(e2/b)*e2' -sigma_b*B );
+if norm([x(1) x(2) x(3)])>=0
+    sgn = 1;
+else
+    sgn=-1;
+end
