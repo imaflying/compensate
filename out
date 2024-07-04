@@ -1,0 +1,6 @@
+clear
+clc
+tic;
+t0=0; tf=20;
+x0=zeros(75,1); t=linspace(t0,tf,401);
+[T2,Y2]=ode15s('outputfeedback',t,x0);
